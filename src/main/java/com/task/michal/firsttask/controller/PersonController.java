@@ -23,29 +23,23 @@ public class PersonController {
         String uuid = UUID.randomUUID().toString();
         return uuid;
     }
-
+ ///TODO prepareDAta ma tylko przygotowac dane nie ma ich filtrowac ani zmieniac to ma sie zadziac w innej metodzie ktora bedzie zwracac Liste<Person> czyli w metodzie task1 to ona ma zwracac wynik juz pofiltrowany
     public List<Person> prepareData() {
-//       TODO stworz 10 obiektów Person
-
         List<Person> persons = new ArrayList<Person>();
         String[] Name = {"Jan", "Michał", "Dachu", "Barbara", "Jan", "Zygmunt", "Franek", "PAweł", "Janusz", "Andrzej"};
         String[] Surname = {"Maria", "Jerzy", "Ziom", "Ja", "Wiktoria", "O" , "Von", "De", "Sir", "Zero"};
         String[] Adress = {"Wrocław", "Wrocław" , "Wrocław", "Warszawa", "Gdańsk", "Wrocław", "Poznań", "Wrocław","Kraków", "Wrocław",};
+        // TODO nazwy zmiennych z malej litery
 
-
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) { //TODO zamien na for each
             int count = 0;
             Person newPerson = new Person();
             persons.add(newPerson);
             newPerson.setName(Name[i]);
             newPerson.setSurname(Surname[i]);
             newPerson.setAdress(Adress[i]);
-
-
-
-
         }
-
+        //TODO nazwy zmiennych powinny byc mowiace co robia
         ArrayList <Person> x = isItUnique(persons, "Jan", "Kraków");
         for (Person z: x) {
             System.out.println(z.getName()+ " "+ z.getSurname() + " "+ z.getAdress());
@@ -54,7 +48,7 @@ public class PersonController {
 
         return persons;
     }
-
+    //TODO dlaczego publiczna i statyczna?
     public static ArrayList<Person> isItUnique(List<Person> persons, String name, String adress) {
         ArrayList<Person> newPErsonList = new ArrayList<>();
 
@@ -68,7 +62,7 @@ public class PersonController {
 
         }
 
-        return newPErsonList;
+        return newPErsonList;//TODO PE
     }
 }
 
