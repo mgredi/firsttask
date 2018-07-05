@@ -15,9 +15,24 @@ public class PersonController {
     private PersonService personService;
 
     @GetMapping("/task1")
-    public List<Person> task1() {
-        return task1();
+    public List<Person> task1(List<Person> persons) {
+        ArrayList<Person> task1 = new ArrayList<>();
+
+        for (Person p : persons) {
+
+            if (p.getName().equalsIgnoreCase("Janusz") || p.getName().equalsIgnoreCase("Zygmunt")) {
+                task1.add(p);
+
+
+            }
+
+        }
+
+        return task1;
     }
+
+
+
 
     public static String generateString() {
         String uuid = UUID.randomUUID().toString();
@@ -28,34 +43,46 @@ public class PersonController {
 //       TODO stworz 10 obiektów Person
 
         List<Person> persons = new ArrayList<Person>();
-        String[] Name = {"Jan", "Michał", "Dachu", "Barbara", "Jan", "Zygmunt", "Franek", "PAweł", "Janusz", "Andrzej"};
-        String[] Surname = {"Maria", "Jerzy", "Ziom", "Ja", "Wiktoria", "O" , "Von", "De", "Sir", "Zero"};
-        String[] Adress = {"Wrocław", "Wrocław" , "Wrocław", "Warszawa", "Gdańsk", "Wrocław", "Poznań", "Wrocław","Kraków", "Wrocław",};
+        String[] name = {"Jan", "Michał", "Dachu", "Barbara", "Jan", "Zygmunt", "Franek", "PAweł", "Janusz", "Andrzej"};
+        String[] surname = {"Maria", "Jerzy", "Ziom", "Ja", "Wiktoria", "O", "Von", "De", "Sir", "Zero"};
+        String[] adress = {"Wrocław", "Wrocław", "Wrocław", "Warszawa", "Gdańsk", "Wrocław", "Poznań", "Wrocław", "Kraków", "Wrocław",};
 
+        int count = 0;
+        while (count != name.length) { //TODO zamien na for each, Jak mam przeiterować przez newPerson pętlą foreach jak nie wiem ile nie person mam stworzyć
 
-        for (int i = 0; i < 10; i++) {
-            int count = 0;
             Person newPerson = new Person();
             persons.add(newPerson);
-            newPerson.setName(Name[i]);
-            newPerson.setSurname(Surname[i]);
-            newPerson.setAdress(Adress[i]);
+            newPerson.setName(name[count]);
+            newPerson.setSurname(surname[count]);
+            newPerson.setAdress(adress[count]);
 
+          //  System.out.println(newPerson.getName());
 
+            count++;
 
 
         }
+for (Person x : persons){
+    System.out.println(x.getName() + " "+  x.getSurname()+ " " + x.getAdress());
+
+}
+
+
+
+
 
         ArrayList <Person> x = isItUnique(persons, "Jan", "Kraków");
         for (Person z: x) {
             System.out.println(z.getName()+ " "+ z.getSurname() + " "+ z.getAdress());
 
         }
+        System.out.println(persons);
 
-        return persons;
+
+        return persons; // czyli to zwraca referencje do danych jak z souta w linijce 51?
     }
 
-    public static ArrayList<Person> isItUnique(List<Person> persons, String name, String adress) {
+    private  ArrayList<Person> isItUnique(List<Person> persons, String name, String adress) {
         ArrayList<Person> newPErsonList = new ArrayList<>();
 
         for (Person p : persons) {
